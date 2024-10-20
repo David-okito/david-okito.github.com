@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Mon Portfolio - Carnet de compétences">
+    <title>Portfolio - Mon Carnet de Compétences</title>
+    <!-- Animate.css CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <!-- GSAP CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/ScrollTrigger.min.js"></script>
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #2c3e50;
+            overflow-x: hidden;
+        }
+
+        header {
+            background-color: #2980b9;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #3498db;
+            padding: 15px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 20px;
+            margin: 0 10px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            border-radius: 5px;
+        }
+
+        nav a:hover, nav a.active {
+            background-color: #2c3e50;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        section {
+            padding: 60px 20px;
+            max-width: 1200px;
+            margin: auto;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.5s ease-in-out;
+        }
+
+        h2 {
+            border-bottom: 2px solid #2c3e50;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            font-size: 28px;
+            color: #34495e;
+        }
+
+        /* Section A propos de moi avec photo */
+        .about-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .about-photo img {
+            max-width: 300px;
+            border-radius: 50%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .about-photo img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .about-text {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .about-text p {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        /* Sections compétences et expériences */
+        .skills-section, .experience-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .skills-section div, .experience-section div {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            flex: 1;
+            min-width: 300px;
+            transform: scale(0.95);
+            transition: all 0.3s ease;
+        }
+
+        .skills-section div:hover, .experience-section div:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            background-color: #ecf0f1;
+        }
+
+        .cv-link {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-top: 20px;
+            background-color: #e74c3c;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s, transform 0.3s;
+        }
+
+        .cv-link:hover {
+            background-color: #c0392b;
+            transform: scale(1.05);
+        }
+
+        footer {
+            background-color: #2980b9;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        @media (max-width: 768px) {
+            .about-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            nav {
+                flex-direction: column;
+            }
+
+            nav a {
+                margin: 5px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="animate__animated animate__fadeInDown">
+        <h1>Mon Portfolio</h1>
+        <p>Bienvenue dans mon carnet de compétences et d'expériences</p>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <a href="#about" class="nav-link">A propos de moi</a>
+        <a href="#formation" class="nav-link">Ma formation</a>
+        <a href="#experiences" class="nav-link">Mes expériences</a>
+        <a href="#competences" class="nav-link">Mes compétences</a>
+        <a href="#ambitions" class="nav-link">Mes ambitions</a>
+        
+        <a href="#cv" class="nav-link">Mon CV</a>
+    </nav>
+
+    <!-- Section A propos de moi avec photo -->
+    <section id="about" class="about-section animate__animated animate__fadeInUp">
+        <div class="about-container">
+            <div class="about-text">
+                <h2>A propos de moi</h2>
+                <p>Je suis David KITUKA OKITO, actuellement étudiant en 2ème année ingénieur en Informatique et Réseaux à l'ESAIP dans la spécialité cybersécurité.
+                    J'ai pour but de devenir ingénieur en informatique et réseaux et plus particulièrement dans le domaine de la sécurité informatique. 
+                    J’ai toujours été intéressé par l’informatique, je trouve ce domaine très passionnant et je souhaiterais donc y appliquer mes connaissances et mon expérience.
+                    j’aspire à devenir ingénieur dans le domaine de la Cybersécurité afin d’apporter mon expertise dans la lutte contre la cybercriminalité et dans la sécurité des systèmes d’information.
+                    En effet, mon projet professionnel s’inscrit dans une volonté de contribuer activement à la protection des données et des infrastructures informatiques. 
+                </p>
+                <p>Mon parcours a été enrichi par diverses expériences, ainsi que des projets réussis et des engagements bénévoles significatifs.</p>
+            </div>
+            <div class="about-photo">
+                <img src="KITUKA OKITO_david_Photo.JPG" alt="Photo">
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Ma formation -->
+    <section id="formation" class="animate__animated animate__fadeInUp">
+        <h2>Ma Formation</h2>
+        <ul>
+            <li>En cours : 2ème année du Cycle Ingénieur du Numérique en Informatique et Réseaux spécialité Cybersécurité à l'ESAIP.</li><br>
+            <li>2023-2024 : 1ère année du Cycle Ingénieur du Numérique en Informatique et Réseaux enrichi par un échange erasmus au semestre 2 en Slovaquie.<br>Administration Linux, Réseaux, Programmation Web, JavaScript, PHP, Base de
+                données, Programmation orientée objet, Modélisation UML, Réseaux avancés,
+                Java.
+                </li><br>
+            <li>2022-2023 : 1ère année du Cycle Ingénieur en Sciences et Technologies de l'Information et de la Communication (STIC) à l'Institut National Polytechnique Felix Houphouët Boigny de Yamoussoukro.<br> Réseaux, Programmation Web, Base de données, Modélisation UML, Langage C,
+                Python.
+                </li><br>
+            <li>2020-2022 : 1ère et 2ème année des Classes Préparatoires aux Grandes Écoles (CPGE), spécialité Maths Physique à l'Institut National Polytechnique Felix Houphouët Boigny de Yamoussoukro.<br> Maths, Physique, Sciences de l'ingénieur.</li><br>
+        </ul>
+    </section>
+
+    <!-- Section Mes expériences -->
+    <section id="experiences" class="animate__animated animate__fadeInUp">
+        <h2>Mes Expériences</h2>
+        <div class="experience-section">
+            <div class="animate__animated animate__bounceInLeft">
+                <h3>Professionnelle</h3>
+                <p>Assistant chef de projet DSI : <br><br>
+                    Grace a cette expérience, j’ai pu développer et approfondir mes compétences en 
+                    programmation web ainsi qu’en sécurité à travers les différentes missions réalisées. En effet, 
+                    j’ai désormais une vision plus large en ce qui concerne la sécurité des échanges mails et des 
+                    sites internet ainsi que des aptitudes et compétences techniques plus poussées en 
+                    développement web à travers les différentes situations auxquelles j’ai dû faire face. En effet, 
+                    les erreurs rencontrées au niveau du code m’ont permis de me rendre compte de l’existence de 
+                    certaines subtilités dans la programmation, me conduisant ainsi à mettre l’accent sur des 
+                    bonnes pratiques afin d’éviter de faire face aux mêmes erreurs à l’avenir. J’ai alors appris de 
+                    nouvelles techniques et méthodes, développant ainsi mon éventail de compétences. J’ai eu 
+                    l’opportunité de découvrir un nouveau Framework : Laravel, un outil très utile dans le monde 
+                    la programmation web que j’ai pu prendre en main à travers cette expérience. 
+                </p>
+            </div>
+            <div class="animate__animated animate__bounceInRight">
+                <h3>Projets réalisés</h3>
+                <p>Réseaux :
+                    Configuration d'une architecture réseau pour une connectivité fiable, sécurisée et
+                    efficace entre tous les périphériques et utilisateurs.<br>
+                    Technologies et outils utilisés : Routeurs, Commutateurs, Points d'accès sans fil (Wi-Fi), Pare-feu.<br><br>
+                    Programmation web : 
+                    Création d'un site Web visant à gérer les notes des étudiants.
+                    Technologies et outils utilisés : HTML, CSS, JavaScript, PHP, MySQL.<br><br>
+                    Site Web sous Linux : 
+                    Création d'un site Web avec configuration de serveurs DHCP et DNS sous Linux.<br>
+                    Technologies et outils utilisés : Serveur Web, Serveur DHCP, Serveur DNS.
+                </p>
+            </div>
+            <div class="animate__animated animate__bounceInLeft">
+                <h3>Engagements bénévoles</h3>
+                <p>Bénévole à la Resourcerie Philodome à Angers : <hr>
+                    Cette expérience à la Resourcerie a développé en moi de la patience et de la persévérance dans la 
+                    résolution de problèmes, renforcer ma capacité à travailler en équipe et à collaborer 
+                    avec divers intervenants. Elle à également contribuer à l’affirmation de mon 
+                    engagement envers la durabilité et la responsabilité sociale, en alignement avec les 
+                    valeurs de la ressourcerie Philodome.<br><br>
+
+                    Intervenant de l'association ANT (Accésibilité Numérique pour Tous) : <hr>
+                    Cette expérience au sein de l'ANT m'a permis de renforcer mes compétences et mes connaisances en informatique 
+                    à travers les cours dispensés au séniors dans l'appréhension des nouvelles technologies. 
+                    Elle à également développer mon aptitude à prendre la parole en public ainsi qu'a transmettre mes connaissances techniques dans un vocabulaire simple et accéssible à tous.  
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Mes compétences -->
+    <section id="competences" class="animate__animated animate__fadeInUp">
+        <h2>Mes Compétences</h2>
+        <div class="skills-section">
+            <div class="animate__animated animate__zoomIn">
+                <h3>Techniques</h3>
+                <p> Réseaux informatiques<br>
+                    Python<br>
+                    Programmation Web<br>
+                    Laravel<br>
+                    Base de données<br>
+                    Linux<br>
+                    Mathématiques<br>
+                    Physique
+                </p>
+            </div>
+            <div class="animate__animated animate__zoomIn">
+                <h3>Comportementales</h3>
+                <p>Capacité d'adaptation<br>
+                   Sens de l'organisation</p>
+            </div>
+            <div class="animate__animated animate__zoomIn">
+                <h3>Transversales</h3>
+                <p>Gestion de projets<br>
+                   Management d'équipe
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Mes ambitions -->
+    <section id="ambitions" class="animate__animated animate__fadeInUp">
+        <h2>Mes Ambitions</h2>
+        <p>Je vise à oeuvrer activement pour la protection des données sensibles<br> et veillez à la confidentialité, l'intégrité et la disponibilité de ces données<br> 
+            tout en veillant à la sensibilisation pour la sécurité des systèmes d'information.</p>
+    </section>
+
+   
+    <!-- Section CV -->
+    <section id="cv" class="animate__animated animate__fadeInUp">
+        <h2>Mon CV</h2>
+        <a href="cv.pdf" class="cv-link" download>Télécharger mon CV</a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Mon Portfolio. Tous droits réservés.</p>
+    </footer>
+
+    <!-- Script GSAP pour les animations et interactions -->
+    <script>
+        // Animation d'apparition des sections au défilement avec GSAP
+        gsap.utils.toArray("section").forEach(section => {
+            gsap.from(section, {
+                scrollTrigger: {
+                    trigger: section,
+                    start: "top 75%", 
+                    toggleActions: "play none none none"
+                },
+                opacity: 0,
+                y: 50,
+                duration: 1
+            });
+        });
+
+        // Animation au survol des cartes de compétences et expériences
+        document.querySelectorAll('.skills-section div, .experience-section div').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                gsap.to(card, { scale: 1.05, duration: 0.3 });
+            });
+
+            card.addEventListener('mouseleave', () => {
+                gsap.to(card, { scale: 1, duration: 0.3 });
+            });
+        });
+
+        // Animation au survol de la photo
+        const aboutPhoto = document.querySelector('.about-photo img');
+        aboutPhoto.addEventListener('mouseenter', () => {
+            gsap.to(aboutPhoto, { scale: 1.1, duration: 0.5 });
+        });
+
+        aboutPhoto.addEventListener('mouseleave', () => {
+            gsap.to(aboutPhoto, { scale: 1, duration: 0.5 });
+        });
+    </script>
+
+</body>
+</html>
